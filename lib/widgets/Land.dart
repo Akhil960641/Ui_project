@@ -24,8 +24,8 @@ class _LandState extends State<Land> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return  ListView.separated(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        // shrinkWrap: true,
+        // physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: 4,
         separatorBuilder: (context, index) => SizedBox(width: size.width*.05,),

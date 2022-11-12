@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IndustrialLand extends StatefulWidget {
-   IndustrialLand({Key? key}) : super(key: key);
+  IndustrialLand({Key? key}) : super(key: key);
 
   @override
   State<IndustrialLand> createState() => _IndustrialLandState();
@@ -41,18 +41,16 @@ class _IndustrialLandState extends State<IndustrialLand> {
             height: 35,
             child: Center(
                 child: Text(
-                  "Property",
-                  style: TextStyle(
-                      color: isFave4 == 0 ? Colors.black : Colors.grey,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                )),
+              "Property",
+              style: TextStyle(
+                  color: isFave4 == 0 ? Colors.black : Colors.grey,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            )),
             decoration: BoxDecoration(
               // color: Colors.redAccent,
               border: Border.all(
-                color: isFave4 == 0
-                    ? Colors.grey.shade300
-                    : Colors.white,
+                color: isFave4 == 0 ? Colors.grey.shade300 : Colors.white,
               ),
               borderRadius: BorderRadius.circular(10),
             ),
@@ -74,18 +72,16 @@ class _IndustrialLandState extends State<IndustrialLand> {
             height: 35,
             child: Center(
                 child: Text(
-                  "Services",
-                  style: TextStyle(
-                      color: isFave4 == 0 ? Colors.grey : Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                )),
+              "Services",
+              style: TextStyle(
+                  color: isFave4 == 0 ? Colors.grey : Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            )),
             decoration: BoxDecoration(
               // color: Colors.redAccent,
               border: Border.all(
-                color: isFave4 == 1
-                    ? Colors.grey.shade300
-                    : Colors.white,
+                color: isFave4 == 1 ? Colors.grey.shade300 : Colors.white,
               ),
               borderRadius: BorderRadius.circular(10),
             ),

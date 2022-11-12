@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ui_project">
+
    <application
         android:label="ui_project"
         android:name="${applicationName}"
@@ -30,5 +31,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyAtT-epcsQXCVFer_mujB0dvQap3ic4bSU"/>
     </application>
 </manifest>

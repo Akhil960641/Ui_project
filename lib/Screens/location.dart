@@ -1,14 +1,16 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:ui_project/HomePage.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:ui_project/Screens/HomePage.dart';
+
 
 
 class Location1 extends StatefulWidget {
-  const Location1({Key? key}) : super(key: key);
+   Location1({Key? key,required this.locationLat,required this.locationLng}) : super(key: key);
+
+  var locationLat,locationLng;
 
   @override
   State<Location1> createState() => _Location1State();
@@ -32,6 +34,21 @@ class _Location1State extends State<Location1> {
     City.text=city;
     india.text=india1;
   }
+  Location lctn = Location();
+  CameraPosition init = const CameraPosition(target: LatLng(11.258753, 75.780411), zoom: 15);
+
+  cls() async {
+
+    LocationData lctndata = await lctn.getLocation();
+    print(lctndata.longitude);
+    init = CameraPosition(
+        target: LatLng(lctndata.latitude!, lctndata.longitude!),zoom: 15);
+    print(init);
+    mapController!.animateCamera(CameraUpdate.newCameraPosition(init));
+  }
+
+
+  GoogleMapController? mapController;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -176,41 +193,28 @@ class _Location1State extends State<Location1> {
                 child: Container(
                   width: size.width*.93,
                   height: size.height*.3,
-                  child:StreamBuilder(
+                  child:GoogleMap(
+                    myLocationButtonEnabled: true,
+                    myLocationEnabled: true,
+                    initialCameraPosition: CameraPosition(target:  LatLng(widget.locationLat,widget.locationLng), zoom: 15),
 
-                      stream: location.onLocationChanged,
+                  ),
+                  // floatingActionButton:
 
-                      builder: (context, AsyncSnapshot<LocationData> snapshot) {
-                        // return FutureBuilder(
-                        //     future: GetLoct(),
-                        // builder: (context, AsyncSnapshot<LocationData> snapshot) {
-                        if (snapshot.hasError) {
-                          return Text('map');
-                        } else if (snapshot.connectionState == ConnectionState.waiting) {
-                          return Center(
-                            child: CircularProgressIndicator(backgroundColor: Colors.red),
-                          );
-                        } else {
-                          return Center(
-                            child: Container(
-                              child: WebView(
-                                  initialUrl:'https://www.google.com/maps/@${snapshot.data!.latitude},${snapshot.data!.longitude},15z',
-                                  javascriptMode: JavascriptMode.unrestricted),
-                            ),
-                          );
-                        }
-
-                      }
                   ) ,
+
                 ),
-              ),
-              Row(
+              //FloatingActionButton(onPressed: cls, child: Icon(Icons.add)),
+
+
+
+            Row(
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(bottom: size.height*.01,left: size.width*.03),
                     child: InkWell(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>UiSample()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Uisample()));
                       },
                       child: Container(
                         width: size.width*.41,
@@ -241,9 +245,10 @@ class _Location1State extends State<Location1> {
               ),
 
             ],
+
           ),
         ),
-      ),
+      )
     );
   }
 }
