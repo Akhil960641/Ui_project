@@ -196,7 +196,9 @@ class _Location1State extends State<Location1> {
                   child:GoogleMap(
                     myLocationButtonEnabled: true,
                     myLocationEnabled: true,
+
                     initialCameraPosition: CameraPosition(target:  LatLng(widget.locationLat,widget.locationLng), zoom: 15),
+                    markers: {Marker(markerId: MarkerId('1'),position: LatLng(widget.locationLat,widget.locationLng),)},
 
                   ),
                   // floatingActionButton:

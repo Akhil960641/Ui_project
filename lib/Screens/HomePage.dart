@@ -19,6 +19,7 @@ class _UisampleState extends State<Uisample> {
   static var image = [];
   static var locationLat = [];
   static var locationLng = [];
+  static var price=[];
 
   Future<dynamic> getdata() async {
     String url = "https://api.xentice.com/api/postadSelect";
@@ -38,6 +39,7 @@ class _UisampleState extends State<Uisample> {
           ((jsonDecode(i["location"])["cord"])["location"])["lat"]);
       locationLng.add(
           ((jsonDecode(i["location"])["cord"])["location"])["lng"]);
+
     }
 
     print(name.length);
